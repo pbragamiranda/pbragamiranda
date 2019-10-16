@@ -1,3 +1,3 @@
-# meu blogue
+# pbragamiranda.github.io
 
-blogue do pedro
+meu blogue

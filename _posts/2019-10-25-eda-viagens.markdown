@@ -4,24 +4,26 @@ title: Viajou - Uma Análise Exploratória das Viagens a Serviço do Governo Fed
 date: 2019-09-20 00:00:00 +0300
 description:  # Add post description (optional)
 img: barplot.png # Add image post (optional)
-tags: [pandas, dados_abertos, EDA] # add tag
+tags: [python, dados_abertos, EDA] # add tag
 ---
 ---
 
 ### Resumo: análise exploratória das viagens realizadas a serviço por servidores federais através dos dados disponibilizados pelo portal da transparência. 
 
 ---
-Apesar do prórprio portal da transparêcia já oferecer uma seção com algumas visualizações interessantes, proponho o exercício de coletá-os em formato csv e analisá-los utilizando o python e algumas de suas bibliotecas. 
+Apesar do prórprio portal da transparêcia já oferecer uma seção com algumas visualizações interessantes, 
+proponho o exercício de coletá-os em formato csv e analisá-los utilizando o python e algumas de suas bibliotecas. 
 
 Quanto cada órgão federal gasta com viagens por ano?
 Qual órgão viaja mais? Qual servidor viaja mais? 
 Qual foi a passagem mais cara? E a diária? 
 
-Podemos responder essas perguntas acessando os dados disponibilizados pelo portal da transparência do governo federal. UTILIZAMOS DADOS EM 2019
+Podemos responder essas perguntas acessando os dados disponibilizados pelo portal da transparência do governo federal. Utilizaremos os dados de 2019 acumulados até o dia 20 de outubro. 
 
-fonte: http://www.portaltransparencia.gov.br/download-de-dados/viagens
-    
-dicionário dos dados: http://www.portaltransparencia.gov.br/pagina-interna/603364-dicion%C3%A1rio-de-dados-viagens-a-Servi%C3%A7o-Pagamentos
+[fonte dos dados](http://www.portaltransparencia.gov.br/download-de-dados/viagens 'Portal da Transparência')    
+[dicionário dos dados](http://www.portaltransparencia.gov.br/pagina-interna/603364-dicion%C3%A1rio-de-dados-viagens-a-Servi%C3%A7o-Pagamentos 'Portal da Transparência')
+
+--- 
 
 ### Índice
 
@@ -29,6 +31,8 @@ dicionário dos dados: http://www.portaltransparencia.gov.br/pagina-interna/6033
 2. Análise 
 3. Visualização
 4. Conclusão 
+
+---
 
 ### Extração e limpeza
 
@@ -132,6 +136,8 @@ viagens['Período - Data de fim'] = pd.to_datetime(viagens['Período - Data de f
 viagens = viagens[['Identificador do processo de viagem','Situação', 'Nome do órgão superior', 'Nome órgão solicitante', 'Nome', 'Cargo', 'Período - Data de início',
                   'Período - Data de fim', 'Destinos', 'Motivo', 'Valor diárias', 'Valor passagens', 'Valor outros gastos']]
 ```
+
+---
 
 ### Análise
 
@@ -259,7 +265,7 @@ agrupado['valor médio viagem'] = agrupado['Valor total passagens'] / agrupado['
  .style.format({'Valor total passagens' : 'R${0:,.0f}', 'valor médio viagem' : 'R${0:,.0f}'})
  .hide_index()
  .highlight_max(subset='valor médio viagem',color='green')
- .highlight_min(subset='valor médio viagem',color='#cd4f39')
+ .highlight_min(subset='valor médio viagem',color='#ffcccb')
 ) 
 ```
 
@@ -272,7 +278,7 @@ agrupado['valor médio viagem'] = agrupado['Valor total passagens'] / agrupado['
             : ;
         }    #T_37453446_f366_11e9_a31e_a86badfc757frow24_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }</style><table id="T_37453446_f366_11e9_a31e_a86badfc757f" ><thead>    <tr>        <th class="col_heading level0 col0" >Nome do órgão superior</th>        <th class="col_heading level0 col1" >Qtd Viagens</th>        <th class="col_heading level0 col2" >Valor total passagens</th>        <th class="col_heading level0 col3" >valor médio viagem</th>    </tr></thead><tbody>
                 <tr>
                                 <td id="T_37453446_f366_11e9_a31e_a86badfc757frow0_col0" class="data row0 col0" >Ministério da Educação</td>
@@ -837,7 +843,7 @@ ida_volta['media_trecho'] = ida_volta['Valor da passagem'] / ida_volta['qtd_viag
           .style.format({'Valor da passagem' : 'R${0:,.0f}', 'media_trecho' : 'R${0:,.0f}'})
           .hide_index()
           .highlight_max(subset='media_trecho',color='green')
-          .highlight_min(subset='media_trecho',color='#cd4f39'))
+          .highlight_min(subset='media_trecho',color='#ffcccb'))
 ```
 
 
@@ -849,7 +855,7 @@ ida_volta['media_trecho'] = ida_volta['Valor da passagem'] / ida_volta['qtd_viag
             : ;
         }    #T_1d6f4464_f378_11e9_a31e_a86badfc757frow6_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }</style><table id="T_1d6f4464_f378_11e9_a31e_a86badfc757f" ><thead>    <tr>        <th class="col_heading level0 col0" >ida_volta</th>        <th class="col_heading level0 col1" >qtd_viagens</th>        <th class="col_heading level0 col2" >Valor da passagem</th>        <th class="col_heading level0 col3" >media_trecho</th>    </tr></thead><tbody>
                 <tr>
                                 <td id="T_1d6f4464_f378_11e9_a31e_a86badfc757frow0_col0" class="data row0 col0" >Brasília-Rio de Janeiro</td>
@@ -1004,7 +1010,7 @@ pessoas['valor médio passagem'] = pessoas['Valor total passagens'] / pessoas['Q
           .style.format({'Valor total passagens' : 'R${0:,.0f}', 'valor médio passagem' : 'R${0:,.0f}'})
           .hide_index()
           .highlight_max(subset='valor médio passagem',color='green')
-          .highlight_min(subset='valor médio passagem',color='#cd4f39'))
+          .highlight_min(subset='valor médio passagem',color='#ffcccb'))
 ```
 
 
@@ -1016,61 +1022,61 @@ pessoas['valor médio passagem'] = pessoas['Valor total passagens'] / pessoas['Q
             : ;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow1_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow2_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow3_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow4_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow5_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow6_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow7_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow8_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow9_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow10_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow11_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow12_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow13_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow14_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow15_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow16_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow17_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow18_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }    #T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow19_col3 {
             : ;
-            background-color:  #cd4f39;
+            background-color:  #ffcccb;
         }</style><table id="T_bb0f76a4_f37c_11e9_a31e_a86badfc757f" ><thead>    <tr>        <th class="col_heading level0 col0" >Nome</th>        <th class="col_heading level0 col1" >Qtd Viagens</th>        <th class="col_heading level0 col2" >Valor total passagens</th>        <th class="col_heading level0 col3" >valor médio passagem</th>    </tr></thead><tbody>
                 <tr>
                                 <td id="T_bb0f76a4_f37c_11e9_a31e_a86badfc757frow0_col0" class="data row0 col0" >Informações protegidas por sigilo</td>
@@ -1214,6 +1220,8 @@ print(pessoas[pessoas['Valor total passagens'] == 0].shape)
 
 
 Das 157875 viagens realizadas, 82175 custaram zero reais. Quase metade. Estranho..
+
+---
 
 ### Conclusão 
 

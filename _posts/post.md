@@ -1,6 +1,6 @@
 ---
 
-Resumo: análise exploratória das viagens realizadas a serviço por servidores federais através dos dados disponibilizados pelo portal da transparência. 
+### Resumo: análise exploratória das viagens realizadas a serviço por servidores federais através dos dados disponibilizados pelo portal da transparência. 
 
 ---
 Apesar do prórprio portal da transparêcia já oferecer uma seção com algumas visualizações interessantes, proponho o exercício de coletá-os em formato csv e analisá-los utilizando o python e algumas de suas bibliotecas. 

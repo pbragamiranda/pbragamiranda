@@ -973,7 +973,7 @@ table tfoot td {
   margin: 0 0 10px;
   position: relative;
   padding-bottom: 15px;
-  font-size: 16px;
+  font-size: 18px;
   #text-transform: uppercase;
   color: #333030;
   font-weight: 700;
@@ -1025,7 +1025,7 @@ table tfoot td {
   position: relative;
   color: #333030;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   margin: 0 0 5px;
   /*text-transform: uppercase;*/
   text-align: center;
@@ -1213,7 +1213,7 @@ a.newer-posts:hover {
 .header-page .page-date {
   color: #a0a0a0;
   font-weight: 300;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
 }
 

@@ -801,7 +801,7 @@ Os valores continuam me parecendo altíssimos:
 
 Qual seria a explicação para esses valores?
 
-Outra pergunta que vem na cabeça é em realação aos trechos mais comuns. Quais seriam? E qual é o preço médio que o governo federal paga nas ponte aéreas mais frequentes?
+Outra pergunta que vem na cabeça é em relação aos trechos mais comuns. Quais seriam? E qual é o preço médio que o governo federal paga nas ponte aéreas mais frequentes?
 
 Parece que algumas passagens são lançadas individualmente, sem colocar os trechos de ida e de volta na mesma linha. Vamos conferir.
 

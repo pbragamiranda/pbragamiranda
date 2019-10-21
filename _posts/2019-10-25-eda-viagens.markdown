@@ -233,7 +233,7 @@ viagens.head(3)
 
 
 
-Olhando o [dicionário dos dados](http://www.portaltransparencia.gov.br/pagina-interna/603364-dicion%C3%A1rio-de-dados-viagens-a-Servi%C3%A7o-Pagamentos 'Portal da Transparência') notamos que a coluna situação possuí dois valores: realizada e não realizada. Como só nos interessa as viagens realizadas, vamos filtrar os dados somente com o que nos interessa. 
+Olhando o [dicionário dos dados](http://www.portaltransparencia.gov.br/pagina-interna/603364-dicion%C3%A1rio-de-dados-viagens-a-Servi%C3%A7o-Pagamentos 'Portal da Transparência') notamos que a coluna situação possuí dois valores: realizada e não realizada. Como só nos interessa as viagens realizadas, vamos filtrar os dados somente com as viagens realizadas. 
 
 Depois vamos agrupar por órgão superior para identificar quais orgãos viajaram mais e gastaram mais com viagens. 
 

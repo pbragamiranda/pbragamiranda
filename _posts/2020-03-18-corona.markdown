@@ -3,12 +3,12 @@ layout: post
 title: Extrator de Dados - Coronavírus 
 date: 2019-09-20 00:00:00 +0300
 description:  # Add post description (optional)
-img: corona.png # Add image post (optional)
+img: convid.png # Add image post (optional)
 tags: [python, dados_abertos, EDA] # add tag
 ---
 ---
 
-### Extrator de Dados Diária - Coronavírus (CONVID-19) 
+### Extrator de Dados Diário - Coronavírus (CONVID-19) 
 
 ---
 Script em Python e automatização diária de extração em Crontab para coletar os dados referentes aos casos confirmados, mortes e recuperações do coronavírus.

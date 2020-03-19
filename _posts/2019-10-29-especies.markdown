@@ -1,6 +1,14 @@
 ---
+layout: post
+title: Viajou - Uma Análise Exploratória das Viagens a Serviço do Governo Federal
+date: 2019-09-20 00:00:00 +0300
+description:  # Add post description (optional)
+img: barplot.png # Add image post (optional)
+tags: [python, dados_abertos, EDA] # add tag
+---
+---
 
-Resumo: análise exploratória das viagens realizadas a serviço por servidores federais através dos dados disponibilizados pelo portal da transparência. 
+### Resumo: análise exploratória das viagens realizadas a serviço por servidores federais através dos dados disponibilizados pelo portal da transparência. 
 
 ---
 Apesar do prórprio portal da transparêcia já oferecer uma seção com algumas visualizações interessantes, proponho o exercício de coletá-los em formato csv e analisá-los utilizando o python e algumas de suas bibliotecas. 
@@ -14,12 +22,16 @@ Podemos responder essas perguntas acessando os dados disponibilizados pelo porta
 [fonte dos dados](http://www.portaltransparencia.gov.br/download-de-dados/viagens 'Portal da Transparência')    
 [dicionário dos dados](http://www.portaltransparencia.gov.br/pagina-interna/603364-dicion%C3%A1rio-de-dados-viagens-a-Servi%C3%A7o-Pagamentos 'Portal da Transparência')
 
+---
+
 ### Índice
 
 1. Extração e limpeza 
 2. Análise 
 3. Visualização
 4. Conclusão 
+
+---
 
 ### Extração e limpeza
 
@@ -33,7 +45,7 @@ print('Iniciando o download dos dados')
 url = 'http://www.portaltransparencia.gov.br/download-de-dados/viagens/2019'
 r = requests.get(url)
 
-with open('/home/blackmamba/Documents/analise_dados/viagens_gov_federal/dados/2019_Viagens.zip', 'wb') as f:
+with open('/dados/2019_Viagens.zip', 'wb') as f:
     f.write(r.content)
 
 print('Download concluído com sucesso')
@@ -59,7 +71,7 @@ pd.set_option("display.precision", 2)  # casas decimais
 pd.set_option('display.max_colwidth', 80)  #-1 pra ver tudo
 
 #sobe os dados
-zf = zipfile.ZipFile('/home/blackmamba/Documents/analise_dados/viagens_gov_federal/dados/2019_Viagens.zip') 
+zf = zipfile.ZipFile('/dados/2019_Viagens.zip') 
 viagens = pd.read_csv(zf.open("2019_Viagem.csv"), sep=";", encoding="latin1")
 ```
 
@@ -118,6 +130,8 @@ viagens['Período - Data de fim'] = pd.to_datetime(viagens['Período - Data de f
 viagens = viagens[['Identificador do processo de viagem','Situação', 'Nome do órgão superior', 'Nome órgão solicitante', 'Nome', 'Cargo', 'Período - Data de início',
                   'Período - Data de fim', 'Destinos', 'Motivo', 'Valor diárias', 'Valor passagens', 'Valor outros gastos']]
 ```
+
+---
 
 ### Análise
 
@@ -219,7 +233,7 @@ viagens.head(3)
 
 
 
-Olhando o [dicionário dos dados](http://www.portaltransparencia.gov.br/pagina-interna/603364-dicion%C3%A1rio-de-dados-viagens-a-Servi%C3%A7o-Pagamentos 'Portal da Transparência') notamos que a coluna situação possuí dois valores: realizada e não realizada. Como só nos interessa as viagens realizadas, vamos filtrar os dados somente com o que nos interessa. 
+Olhando o [dicionário dos dados](http://www.portaltransparencia.gov.br/pagina-interna/603364-dicion%C3%A1rio-de-dados-viagens-a-Servi%C3%A7o-Pagamentos 'Portal da Transparência') notamos que a coluna situação possuí dois valores: realizada e não realizada. Como só nos interessa as viagens realizadas, vamos filtrar os dados somente com as viagens realizadas. 
 
 Depois vamos agrupar por órgão superior para identificar quais orgãos viajaram mais e gastaram mais com viagens. 
 
@@ -437,7 +451,7 @@ ax.set_xlabel('Gastos com viagens por órgão')
 
 
 
-![png](post_files/post_16_1.png)
+![grafico]({{site.baseurl}}/assets/img/viagens/barplot.png)
 
 
 Quais foram as passagens mais caras?
@@ -627,7 +641,7 @@ As três viagens que queremos mais informações possuem os identificadores '161
 
 ```python
 #sobe os dados de passagem
-zf = zipfile.ZipFile('/home/blackmamba/Documents/analise_dados/viagens_gov_federal/dados/2019_Viagens.zip') 
+zf = zipfile.ZipFile('/dados/2019_Viagens.zip') 
 passagens = pd.read_csv(zf.open("2019_Passagem.csv"), sep=";", encoding="latin1")
 ```
 
@@ -787,7 +801,7 @@ Os valores continuam me parecendo altíssimos:
 
 Qual seria a explicação para esses valores?
 
-Outra pergunta que vem na cabeça é em realação aos trechos mais comuns. Quais seriam? E qual é o preço médio que o governo federal paga nas ponte aéreas mais frequentes?
+Outra pergunta que vem na cabeça é em relação aos trechos mais comuns. Quais seriam? E qual é o preço médio que o governo federal paga nas ponte aéreas mais frequentes?
 
 Parece que algumas passagens são lançadas individualmente, sem colocar os trechos de ida e de volta na mesma linha. Vamos conferir.
 
@@ -1207,13 +1221,11 @@ print(pessoas[pessoas['Valor total passagens'] == 0].shape)
 
 Das 157875 viagens realizadas, 82175 custaram zero reais. Quase metade. Por que será?!
 
+---
+
 ### Conclusão 
 
 A base de dados disponibilizada pelo portal da transparência permite diversas análise referente as viagens realizadas pelos servidores(as) federais. Para futuros estudos também há a possibilidade de entender o comportamento dos gastos com diárias, os principais motivos das viagens e os órgãos que mais solicitam viagens.
 
 Apesar do governo federal oferecer essa plataforma como instrumento de transparência ativa, podemos perceber que ainda existe espaço para melhora na fiscalização da qualidade das informações disponibilizadas por este canal.
 
-
-```python
-
-```

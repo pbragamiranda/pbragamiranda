@@ -3,5 +3,5 @@
 <br>
 - 📫 How to reach me **pbragamiranda@pm.me**
 
-# Open Source
+## Open Source
 - [Kagi Fastgpt To Markdown Chrome Extenstion](https://chromewebstore.google.com/detail/kagi-fastgpt-to-markdown/bamhebecdlhhkedgncapjoofbohgiogc). See at [KagiDocs - Community Add-ons](https://help.kagi.com/kagi/community-addons/)
